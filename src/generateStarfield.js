@@ -1,7 +1,6 @@
-const size = 0.1;
 
 const randomCoordinatesWithMinimumDistance = (minDistance) => {
-  const r = 10; // range
+  const r = 100; // range
   const x = Math.random() * (2 * r) - r;
   const y = Math.random() * (2 * r) - r;
   const z = Math.random() * 12 - 2;
@@ -19,20 +18,7 @@ const randomCoordinatesWithMinimumDistance = (minDistance) => {
  * @param {number} starCount 
  * @returns {number[]}
  */
-const generateStarfieldCoordinates = (starCount) => new Array(starCount).fill(0).map(() => randomCoordinatesWithMinimumDistance(0.1))
-
-/**
- * Generate a flattened array of coordinates for triangles that represent
- * a star.
- * @param {number[]} xyzw
- * @returns {number[]}
- */
-const generateStar = ([x, y, z]) => [
-  // Triangle 1
-  x, y, z,
-  // x + size, y, z,
-  // x, y - size, z,
-]
+const generateStarfieldCoordinates = (starCount) => new Array(starCount).fill(0).map(() => randomCoordinatesWithMinimumDistance(1.0))
 
 /**
  * Generate a flattened array of coordinates for triangles that represent
@@ -40,7 +26,7 @@ const generateStar = ([x, y, z]) => [
  * @param {number} starCount 
  * @returns {number[]}
  */
-export const generateStarfield = (starCount) => generateStarfieldCoordinates(starCount).flatMap(generateStar);
+export const generateStarfield = (starCount) => generateStarfieldCoordinates(starCount).flat();
 // export const generateStarfield = (starCount) => [
 //   // triangle 1
 //   -0.1, -0.1, 0.1,

@@ -2,16 +2,21 @@
 precision mediump float;
 
 in vec3 inPosition;
+
 uniform mat4 viewProjection;
+uniform float speed;
+
 out vec3 outPosition;
+out vec3 vPosition;
 
 void main() {
-    gl_PointSize = 3.0 - (3.0 * ((inPosition.z + 2.0) / 12.0));
+    float baseSize = 2.0;
+    gl_PointSize = baseSize - (baseSize * ((inPosition.z + 2.0) / 12.0));
     gl_Position = vec4(inPosition.xyz, 1.0) * viewProjection;
+    vPosition = vec3(inPosition.xyz);
 
     outPosition = inPosition;
-    // outPosition.z = 1.5;
-    outPosition.z -= 0.03;
+    outPosition.z -= speed;
 
     if (outPosition.z < -2.0) {
         outPosition.z = 10.0;

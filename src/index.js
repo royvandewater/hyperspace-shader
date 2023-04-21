@@ -31,7 +31,7 @@ const genMatrix = (gl) => {
   const zNear = 0.01;
   const zFar = 10;
   const projection = twgl.m4.perspective(fov, aspect, zNear, zFar);
-  const eye = [0, 0, -2];
+  const eye = [0, 0, -20];
   const target = [0, 0, 6];
   const up = [0, 1, 0];
 
@@ -56,7 +56,7 @@ const render = (bundle) => {
   twgl.setBuffersAndAttributes(gl, programInfo, bufferInfo);
 
   const { viewProjection } = genMatrix(gl);
-  twgl.setUniforms(programInfo, { viewProjection })
+  twgl.setUniforms(programInfo, { viewProjection, speed: window.speed || 0.1 })
 
   twgl.bindTransformFeedbackInfo(gl, programInfo.transformFeedbackInfo, bufferInfo);
   gl.beginTransformFeedback(gl.POINTS);
@@ -74,7 +74,7 @@ const main = async () => {
   const vertexShader = await fetchText('./src/shaders/vertex.glsl');
   const fragmentShader = await fetchText('./src/shaders/fragment.glsl');
   const programInfo = twgl.createProgramInfo(gl, [vertexShader, fragmentShader], { transformFeedbackVaryings: ['outPosition'] });
-  const starField = generateStarfield(100000);
+  const starField = generateStarfield(10000);
   const bufferInfo = twgl.createBufferInfoFromArrays(gl, {
     inPosition: starField,
     outPosition: Array(starField.length).fill(0),
