@@ -1,4 +1,4 @@
-import * as twgl from 'http://cdn.jsdelivr.net/gh/greggman/twgl.js/dist/5.x/twgl-full.module.js'
+import * as twgl from 'https://cdn.jsdelivr.net/gh/greggman/twgl.js/dist/5.x/twgl-full.module.js'
 import { generateStarfield } from './generateStarfield.js'
 
 /**
