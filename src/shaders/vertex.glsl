@@ -10,7 +10,7 @@ out vec3 outPosition;
 out vec3 vPosition;
 
 void main() {
-    float baseSize = 2.0;
+    float baseSize = 4.0;
     gl_PointSize = baseSize - (baseSize * ((inPosition.z + 2.0) / 12.0));
     gl_Position = vec4(inPosition.xyz, 1.0) * viewProjection;
     vPosition = vec3(inPosition.xyz);

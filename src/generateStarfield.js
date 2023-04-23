@@ -27,14 +27,3 @@ const generateStarfieldCoordinates = (starCount) => new Array(starCount).fill(0)
  * @returns {number[]}
  */
 export const generateStarfield = (starCount) => generateStarfieldCoordinates(starCount).flat();
-// export const generateStarfield = (starCount) => [
-//   // triangle 1
-//   -0.1, -0.1, 0.1,
-//   -0.1, 0.1, 0.1,
-//   0.1, -0.1, 0.1,
-//   // triangle 2
-//   0.1, -0.1, 0.1,
-//   -0.1, 0.1, 0.1,
-//   0.1, 0.1, 0.1,
-// ];
-// 
